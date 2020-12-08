@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import csv
+from pathlib import Path
 
 #Make output cleaner
 #import warnings
@@ -8,10 +9,12 @@ import csv
 
 #read files
 train_filepath = './datasets/covid_training.tsv'
-test_filepath = './datasets/covid_test_public'
+test_filepath = './datasets/covid_test_public.tsv'
 
 #output path
 output_dir = "./output"
+output_OV_filename = output_dir + "/trace_NB-BOW-OV.txt"
+output_FV_filename = output_dir + "/trace_NB-BOW-FV.txt"
 
 """
 Utility method for reading tsv files.
@@ -43,3 +46,24 @@ def load_tsv(filepath):
     except FileNotFoundError:
         print(f"File not found: {filepath}")
     
+"""
+Utility method for the output
+Input is file path of output file
+"""
+def output(filepath, output_data):
+    try:
+        # Create output dir if it doesn't exist.
+        Path(output_dir).mkdir(parents=True, exist_ok=True)
+        
+        # newline="" because there are empty lines between rows.
+        with open(filepath, mode='w', encoding="utf-8") as file:
+            
+            # Loop through 2d array
+            for row in output_data:
+                for col in row:
+                    file.write(col)
+                    file.write("  ")
+                file.write("\n")
+                
+    except FileNotFoundError:
+            print(f"File not found: {filepath}")
