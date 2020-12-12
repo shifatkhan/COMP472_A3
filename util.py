@@ -26,7 +26,7 @@ def load_tsv(filepath):
     training_data = [] #2d array
 
     try:    
-        with open(filepath, 'r', encoding="mbcs") as tsvfile:
+        with open(filepath, 'r', encoding="utf-8") as tsvfile:
             lines = csv.reader(tsvfile, delimiter='\t')
             
             #create 2d array
@@ -67,3 +67,13 @@ def output(filepath, output_data):
                 
     except FileNotFoundError:
             print(f"File not found: {filepath}")
+            
+def write_dictionary(dictionary, filename):
+    path = f"output/{filename}.txt"
+    with open(path, 'w', encoding="utf-8") as index_out:
+        output = "{\n"
+        for item in dictionary:
+            output += "\t\'" + item + "\' : " + str(dictionary[item]) + "\n"
+        output += "}"
+        
+        index_out.write(output)
