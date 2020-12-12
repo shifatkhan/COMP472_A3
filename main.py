@@ -18,3 +18,9 @@ util.write_dictionary(OV, "OV")
 util.write_dictionary(FV, "FV")
 
 classifier = MNB(OV, training_data)
+
+tweet1 = test_data[34]
+yes_score, no_score = classifier.get_scores(tweet1)
+
+print(yes_score)
+print(no_score)
