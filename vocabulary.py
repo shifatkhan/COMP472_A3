@@ -28,26 +28,24 @@ def create_original_vocabulary(dataset_list):
                 # else increment frequency
                 tweet_dict[lower_word] += 1
     
-    return tweet_dict
+    # returns dictionary sorted by values in ascending order
+    return {k: v for k, v in sorted(tweet_dict.items(), key=lambda item: item[1], reverse=True)}
 
 def create_filtered_vocabulary(dataset_list):
     tweet_dict = {}
+    seen = set()
     for row in dataset_list:
-        
         text = row[1]
         tokens = text.split()
         
-        # seen is a set that will 
-        seen = set()
         for word in tokens:
+            lower_word = word.lower()
             
             # if the word appears once, put it in set
-            if word not in seen:
-                seen.add(word)
+            if lower_word not in seen:
+                seen.add(lower_word)
             # else if the word appears more than once, add it to dictionary
             else:
-                lower_word = word.lower()
-                
                 # Add to dictionary if doesn't exist yet
                 if lower_word not in tweet_dict:
                     tweet_dict[lower_word] = 2
@@ -55,6 +53,6 @@ def create_filtered_vocabulary(dataset_list):
                     # else increment frequency
                     tweet_dict[lower_word] += 1
     
-    return tweet_dict
+    return {k: v for k, v in sorted(tweet_dict.items(), key=lambda item: item[1], reverse=True)}
 
 
