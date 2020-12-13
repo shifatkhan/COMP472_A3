@@ -61,7 +61,7 @@ def output(filepath, output_data):
             # Loop through 2d array
             for row in output_data:
                 for col in row:
-                    file.write(col)
+                    file.write(str(col))
                     file.write("  ")
                 file.write("\n")
                 
