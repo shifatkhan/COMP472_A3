@@ -10,6 +10,9 @@ import util
 
 class MNB:
     
+    """
+    Function to set up the classifier using a given dataset
+    """
     def __setup(self, training_set):
         # num used for calculating p(yes) and p(no)
         num_tweets_yes = 0
@@ -74,6 +77,9 @@ class MNB:
         
         self.__setup(training_set)
     
+    """
+    Calculates P(w | c) for w = given token and c = class 'no'
+    """
     def __find_p_token_no(self, token):
         fw = 0 + self.smoothing
         total_w = self.total_w_no + (len(self.vocab) * self.smoothing)
@@ -83,7 +89,10 @@ class MNB:
             fw += self.no_vocab[token]
             
         return fw / total_w
-        
+    
+    """
+    Calculates P(w | c) for w = given token and c = class 'yes'
+    """
     def __find_p_token_yes(self, token):
         fw = 0 + self.smoothing
         total_w = self.total_w_yes + (len(self.vocab) * self.smoothing)
@@ -93,7 +102,10 @@ class MNB:
             fw += self.yes_vocab[token]
             
         return fw / total_w
-        
+    
+    """
+    Calculates the score for a given tweet.
+    """
     def get_scores(self, tweet):
         tweet_id = tweet[0]
         tweet_text = tweet[1]

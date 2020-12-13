@@ -67,7 +67,11 @@ def output(filepath, output_data):
                 
     except FileNotFoundError:
             print(f"File not found: {filepath}")
-            
+
+
+"""
+Function to output dictionary to file
+"""    
 def write_dictionary(dictionary, filename):
     path = f"output/{filename}.txt"
     with open(path, 'w', encoding="utf-8") as index_out:
