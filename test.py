@@ -5,18 +5,11 @@ Created on Tue Dec  8 13:59:02 2020
 @author: NgoWi
 """
 
-a = "Hello my name is watata"
-b = "What is going on"
+seen = set()
 
-at = a.split()
-bt = b.split()
-d = "jesus christ my leg hurts"
-dt = d.split()
+seen.add("a")
+e = "e"
+if e not in seen:
+    seen.add("e")
 
-c = at + bt
-
-print(c)
-
-c += dt
-
-print(c)
+print(seen)

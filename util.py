@@ -16,6 +16,9 @@ output_dir = "./output"
 output_OV_filename = output_dir + "/trace_NB-BOW-OV.txt"
 output_FV_filename = output_dir + "/trace_NB-BOW-FV.txt"
 
+eval_OV_filename = output_dir + "/eval_NB-BOW-OV.txt"
+eval_FV_filename = output_dir + "/eval_NB-BOW-FV.txt"
+
 """
 Utility method for reading tsv files.
 Input is file path of the tsv file
@@ -26,7 +29,7 @@ def load_tsv(filepath):
     training_data = [] #2d array
 
     try:    
-        with open(filepath, 'r', encoding="mbcs") as tsvfile:
+        with open(filepath, 'r', encoding="utf-8") as tsvfile:
             lines = csv.reader(tsvfile, delimiter='\t')
             
             #create 2d array
@@ -61,9 +64,23 @@ def output(filepath, output_data):
             # Loop through 2d array
             for row in output_data:
                 for col in row:
-                    file.write(col)
+                    file.write(str(col))
                     file.write("  ")
                 file.write("\n")
                 
     except FileNotFoundError:
             print(f"File not found: {filepath}")
+
+
+"""
+Function to output dictionary to file
+"""    
+def write_dictionary(dictionary, filename):
+    path = f"output/{filename}.txt"
+    with open(path, 'w', encoding="utf-8") as index_out:
+        output = "{\n"
+        for item in dictionary:
+            output += "\t\'" + item + "\' : " + str(dictionary[item]) + "\n"
+        output += "}"
+        
+        index_out.write(output)
