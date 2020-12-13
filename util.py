@@ -16,6 +16,9 @@ output_dir = "./output"
 output_OV_filename = output_dir + "/trace_NB-BOW-OV.txt"
 output_FV_filename = output_dir + "/trace_NB-BOW-FV.txt"
 
+eval_OV_filename = output_dir + "/eval_NB-BOW-OV.txt"
+eval_FV_filename = output_dir + "/eval_NB-BOW-FV.txt"
+
 """
 Utility method for reading tsv files.
 Input is file path of the tsv file
