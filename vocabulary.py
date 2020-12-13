@@ -31,6 +31,9 @@ def create_original_vocabulary(dataset_list):
     # returns dictionary sorted by values in ascending order
     return {k: v for k, v in sorted(tweet_dict.items(), key=lambda item: item[1], reverse=True)}
 
+"""
+Creates a dictionary similar to the function above but only have words that have frequency more than 1
+"""
 def create_filtered_vocabulary(dataset_list):
     tweet_dict = {}
     seen = set()
