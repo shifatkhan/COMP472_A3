@@ -1,6 +1,6 @@
-https://github.com/shifatkhan/COMP472_A3
+https://github.com/shifatkhan/MNB_TextClassification
 
-# COMP472 Assignment 3
+# Multinomial Naive-bayes text classification program for COMP472 at Concordia University
 ### Team:
 Shifat Khan, William Ngo, Thanh Tung Nguyen
 
